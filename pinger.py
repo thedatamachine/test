@@ -26,4 +26,4 @@ for i in iplist:
     p = subprocess.Popen(["ping", "-c 1", "-W .2", i], stdout=subprocess.PIPE)
     line = p.communicate()
     print(line)
-# testpush
+# testpusher
