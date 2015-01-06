@@ -1,5 +1,6 @@
 import re
 import subprocess
+import socket
 
 ip = raw_input("Enter IP Range : ")
 print ""
@@ -11,16 +12,16 @@ extractTriplet = re.match(r'\d{1,3}.\d{1,3}.\d{1,3}.', ip, re.IGNORECASE)
 triplet = extractTriplet.group()  # extracted groups
 range1 = int(extractRange.group(1))
 range2 = int(extractRange.group(2))
-print "triplet = %s" % (triplet)
-print "range1 = %s" % (range1)
-print "range2 = %s\n" % (range2)
-print "list of IP's to ping:"
 iplist = []
 while range1 <= range2:
     iplist.append(str(triplet) + str(range1))
     range1 += 1
-print iplist
 for i in iplist:
-    p = subprocess.Popen(["ping", "-c 1", "-W .2", i], stdout=subprocess.PIPE)
-    line = p.communicate()
-    print(line)
+    print(socket.gethostbyaddr(i))
+
+
+
+# for i in iplist:
+#     p = subprocess.Popen(["ping", "-c 1", "-W .2", i], stdout=subprocess.PIPE)
+#     line = p.communicate()
+#     print(line)
