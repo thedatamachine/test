@@ -17,11 +17,12 @@ while range1 <= range2:
     iplist.append(str(triplet) + str(range1))
     range1 += 1
 for i in iplist:
-    print(socket.gethostbyaddr(i))
-
+    try:
+        print(socket.gethostbyaddr(i))
+    except socket.herror as e:
+        print "no connection"
 
 
 # for i in iplist:
-#     p = subprocess.Popen(["ping", "-c 1", "-W .2", i], stdout=subprocess.PIPE)
+# p = subprocess.Popen(["ping", "-c 1", "-W .2", i], stdout=subprocess.PIPE)
 #     line = p.communicate()
-#     print(line)
